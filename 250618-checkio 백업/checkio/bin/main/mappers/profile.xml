@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.ictedu.checkio.dao.ProfileDao">
+
+	<select id="profile" resultType="savo">
+		SELECT s.profileImage, s.user_id, d.dept_name, s.tel_no, s.email,
+		s.position,
+		s.reg_date, (SELECT SA_FILE_PATH FROM SA_ATTACH) AS fn FROM sawon s,
+		DEPARTMENT d WHERE s.dept_no = d.DEPT_NO
+	</select>
+
+	<update id="updateProfile" parameterType="savo">
+		UPDATE SAWON s SET s.profileImage = #{profileImage}, s.tel_no =
+		#{tel_no}, s.email = #{email}
+	</update>
+
+	<insert id="addImg" parameterType="java.util.List">
+	<foreach collection="list" item="item" separator=";" open="BEGIN" close="; END;">
+		INSERT INTO sa_attach (
+			sa_att_uid,
+			sa_reg_id,
+			sa_mod_id,
+			sa_mod_date,
+			sa_reg_date,
+			sa_file_name,
+			sa_file_path,
+			sa_source_id
+		) VALUES (
+			sawon_sauid_seq.nextval,
+			#{item.sa_reg_id},
+			null,
+			null,
+			sysdate,
+			#{item.sa_file_name},
+			#{item.sa_file_path},
+			#{item.sa_source_id}
+		)
+	</foreach>
+</insert>
+
+
+</mapper>

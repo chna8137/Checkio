@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.ictedu.checkio.dao.SawonDao">
+
+	<!-- 사원 신규 등록 -->
+	<insert id="insertSawon" parameterType="savo">
+		<selectKey keyProperty="sa_uid" resultType="int" order="BEFORE">
+			SELECT checkio2.sawon_saUid_seq.nextval FROM dual
+		</selectKey>
+		INSERT INTO checkio2.sawon 
+		(
+		sa_uid, reg_id, reg_date, status,
+		user_name, user_id, password, join_date 
+		<if test="dept_no != null">, dept_no</if>
+      	<if test="auth_uid != null">, auth_uid</if>
+      	) VALUES 
+      	(
+		#{sa_uid}, #{reg_id}, SYSDATE, 'N', #{user_name}, #{user_id},
+		#{password}, SYSDATE 
+		<if test="dept_no != null">, #{dept_no}</if>
+	    <if test="auth_uid != null">, #{auth_uid}</if>
+	    )
+      </insert>
+
+	<!-- user_id 기준 사원 조회 -->
+	<select id="selectByUserId" parameterType="string" resultType="savo">
+		SELECT * FROM checkio2.sawon WHERE user_id = #{userId}
+	</select>
+
+	<!-- 로그인 처리 -->
+	<select id="login" resultType="savo">
+		SELECT s.*, a.auth_level, a.auth_name
+		FROM checkio2.sawon s
+		JOIN checkio2.authority a ON s.auth_uid = a.auth_uid
+		WHERE s.user_id = #{user_id}
+		AND s.password = #{password}
+	</select>
+
+	<!-- 권한 레벨 조회 -->
+	<select id="selectAuthLevelByUserId" parameterType="string" resultType="int">
+		SELECT a.auth_level
+		FROM checkio2.sawon s
+		JOIN checkio2.authority a ON s.auth_uid = a.auth_uid
+		WHERE s.user_id = #{userId}
+	</select>
+
+	<!-- 사번 기준 조회 -->
+	<select id="selectBySaUid" parameterType="int" resultType="savo">
+		SELECT * FROM checkio2.sawon WHERE sa_uid = #{saUid}
+	</select>
+
+	<!-- 권한 레벨로 auth_uid 조회 -->
+	<select id="findAuthUidByLevel" parameterType="int" resultType="int">
+		SELECT auth_uid FROM checkio2.authority WHERE auth_level = #{level} AND
+		ROWNUM = 1
+	</select>
+
+	<!-- 부서 이름으로 dept_no 조회 -->
+	<select id="findDeptNoByName" parameterType="string" resultType="int">
+		SELECT dept_no FROM checkio2.department WHERE dept_name = #{deptName}
+		AND ROWNUM = 1
+	</select>
+
+	<!-- 인사과에서 사원 정보 수정 -->
+	<update id="updateSawon" parameterType="savo"> UPDATE checkio2.sawon 
+		<set>
+			<if test="password    != null"> password = #{password}, </if>
+			<if test="tel_no      != null"> tel_no = #{tel_no}, </if>
+			<if test="phone_no    != null"> phone_no = #{phone_no}, </if>
+			<if test="email       != null"> email = #{email}, </if>
+			<if test="zipcode     != null"> zipcode = #{zipcode}, </if>
+			<if test="address1    != null"> address1 = #{address1}, </if>
+			<if test="address2    != null"> address2 = #{address2}, </if>
+			<if test="gender      != null"> gender = #{gender}, </if>
+			<if test="birthdate   != null"> birthdate = #{birthdate}, </if>
+			<if test="position    != null"> position = #{position}, </if>
+			<if test="emp_num     != null"> emp_num = #{emp_num}, </if>
+			<if test="dept_no     != null"> dept_no = #{dept_no}, </if>
+			<if test="auth_uid    != null"> auth_uid = #{auth_uid}, </if> 
+			mod_id = #{mod_id}, mod_date = SYSDATE
+		</set>
+		WHERE sa_uid = #{sa_uid}
+	</update>
+
+</mapper>

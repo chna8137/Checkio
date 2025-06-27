@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.ictedu.checkio.dao.SaAttachDao">
+
+	<insert id="insertSaAttach" parameterType="saattvo">
+		INSERT INTO SA_ATTACH VALUES(SAATTACH_SAATTUID_SEQ.NEXTVAL, 0, SYSDATE,
+		NULL, NULL, #{SA_FILE_NAME}, #{SA_FILE_PATH}, #{SA_SOURCE_ID})
+	</insert>
+
+	<select id="getAttachByUid" resultType="saattvo" parameterType="int">
+		SELECT sa_att_uid, sa_file_name, sa_file_path
+		FROM sa_attach
+		WHERE sa_att_uid = #{sa_att_uid}
+	</select>
+
+	<!--<update id="updateSaAttach" parameterType="saattvo">
+		UPDATE sa_attach SET SA_FILE_PATH = #{SA_FILE_PATH}
+	</update>-->
+
+</mapper>

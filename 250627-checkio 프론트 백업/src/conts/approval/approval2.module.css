@@ -1,0 +1,128 @@
+.container {
+  /*#280137*/
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.725);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  color: rgb(39, 39, 39);
+}
+
+.boardTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.boardTable th,
+.boardTable td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.boardTable th {
+  max-width: 50px;
+}
+
+.boardTable thead {
+  background-color: lightblue;
+}
+
+.titleLink {
+  text-decoration: none;
+  color: black;
+}
+
+.titleLink:hover {
+  text-decoration: underline;
+  color: dodgerblue;
+}
+
+.button {
+  width: 100px;
+  padding: 10px;
+  background-color: #2aa5e7;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.button:hover {
+  background-color: #2694cf;
+}
+
+/*upboardform*/
+/*
+  form
+  */
+.title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-title {
+  padding: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 95%;
+}
+
+.detail {
+  text-align: center;
+}
+
+.detail img {
+  width: 400px;
+  max-width: 90%;
+  height: auto;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.boxchecked {
+  background-color: rgba(255, 255, 255, 0.600);
+}

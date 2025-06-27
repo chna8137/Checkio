@@ -1,0 +1,103 @@
+.form {
+  max-width: 600px;
+  margin: 80px auto;
+  padding: 40px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.h2 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.row .input {
+  flex: 1;
+}
+
+.input {
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.input:focus {
+  outline: 2px solid #2aa5e7;
+}
+
+.button {
+  padding: 10px 16px;
+  background-color: #2aa5e7;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.button:hover {
+  background-color: #1d8fcb;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+legend {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+}
+
+@media (max-width: 480px) {
+  .form {
+    padding: 24px;
+    gap: 16px;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+}

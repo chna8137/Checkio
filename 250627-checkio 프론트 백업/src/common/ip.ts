@@ -1,0 +1,1 @@
+export const ip = '자신의IP/checkio';

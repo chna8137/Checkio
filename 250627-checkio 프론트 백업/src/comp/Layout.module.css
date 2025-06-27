@@ -1,0 +1,113 @@
+.header {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.menuButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menuIcon {
+  width: 23px;
+  height: 23px;
+}
+
+.auth {
+  display: flex;
+  gap: 10px;
+}
+
+.authLink {
+  text-decoration: none;
+  color: rgb(39, 39, 39);
+}
+
+/* 사이드바(닫힘)*/
+.sidebarClosed {
+  background-color: rgb(255, 255, 255);
+  position: fixed;
+  top: 70px; 
+  left: 0;
+  width: 60px; 
+  height: calc(100% - 60px);  /* 사이드바 너비와 동일 */
+  padding: 10px;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* 사이드바(열림)*/
+.sidebarOpen {
+  background-color: rgb(255, 255, 255);
+  position: fixed;
+  top: 70px; 
+  left: 0;
+  width: 60px;
+  height: calc(100% - 60px);  /* 사이드바 너비와 동일 */
+  padding: 10px;
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav a {
+  display: block;
+  color: rgb(10, 10, 10);
+  text-decoration: none;
+  margin: 14px 0;
+  padding: 6px 8px;
+}
+
+.main {
+  margin-top: 60px;
+  margin-left: 0px;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.mainShifted {
+  margin-top: 60px;
+  margin-left: 60px; /* 사이드바 너비와 동일(영역 조절) */
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.content {
+  padding: 25px;
+}
+
+.logoImage {
+  width: 140px;
+  height: 140px;
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+}
+
+.floatingMenu {
+  position: absolute;
+  top: 80px;
+  left: 50px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 6px;
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+}

@@ -1,0 +1,88 @@
+/*
+네비게이션에만 사용하도록 구현했고,
+네비게이션 박스 자체 스타일은 아래와 같음.
+*/
+.navbar {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+/* 링크에 적용할 클래스 */
+.link {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+  
+.link:hover {
+  color: dodgerblue;
+}
+/* 현재 경로와 일치할 때 글자 색 dodgerblue + bold */
+.active {
+  color: dodgerblue;
+  font-weight: bold;
+}
+  .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownContent {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  display: flex;
+  flex-direction: row;
+  
+  background-color: #f8f9fa;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-top: 4px;
+  margin-left: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 10;
+  min-width: 150px;
+}
+.dropdownList{
+  min-width: 100px;
+  text-align: center;
+  border-right : 1px solid #eaeaea;
+  color: black;
+}
+
+.dropdownContent a {
+  padding: 10px 15px;
+  font-size: 16px;
+  color: black;
+  text-decoration: none;
+}
+
+.dropdownList:hover {
+  background-color: #ececec;
+  color: orange;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.arrow {
+  margin-left: 5px;
+  font-size: 20px;
+} 
+
+.ok{
+  border: 1px none;
+  background-color: red;
+  color: white;
+}
+.no{
+  border: 1px none;
+  background-color: grey;
+  color: white;
+}
